@@ -4,7 +4,7 @@ from enum import Enum
 
 token = "12345567:ABCxyz"
 db_file = "db.vdb"
-
+static_params='?country_code=RU&currency_code=RUB&grape_filter=varietal&order=desc'
 
 class States(Enum):
     S_START = "0"
