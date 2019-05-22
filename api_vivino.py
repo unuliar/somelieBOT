@@ -39,7 +39,10 @@ def get_wines(web_session_key, serialized_request):
     conn.request("GET", "/api/explore/explore" + serialized_request, headers=headers)
     res = conn.getresponse()
     decompressed_data = zlib.decompress(res.read(), 16 + zlib.MAX_WBITS)
-    parsed = json.loads(decompressed_data, object_hook=as_wine)
+    try:
+        parsed = json.loads(decompressed_data, object_hook=as_wine)
+    except Exception:
+        return []
 
     vintages = parsed['explore_vintage']['matches']
     wines = []

@@ -8,7 +8,7 @@ import config
 def get_current_state(user_id):
     with Vedis(config.db_file) as db:
         try:
-            return db[user_id] #.decode()
+            return db[user_id].decode()
         except KeyError:
             return config.States.S_START.value
 

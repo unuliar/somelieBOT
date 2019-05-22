@@ -1,3 +1,5 @@
+from urllib.parse import urlencode, quote_plus
+
 class wine:
     def __init__(self, name='', img='', stat_str='0', year_str='0', price_str='0', volume_ml='0', seo_name='', id=''):
         self.name = name
@@ -20,11 +22,10 @@ class wine_request:
         self.min_rating = min_rating
 
     def serialize(self):
-        params_static = "?country_code=RU&currency_code=RUB&grape_filter=varietal"
-        params_str = "&min_rating={}&order_by=&order=desc&price_range_min={}&price_range_max={}&wine_type_ids[]={}"
-        params_static += params_str
-        params_str.format(self.min_rating, self.min_price, self.max_price, self.type_id)
-        return params_str
+        payload = {'country_code':'RU', 'currency_code':'RUB', 'grape_filter':'varietal',
+                   'min_rating':self.min_rating, 'order':'desc', 'price_range_min':self.min_price,
+                   'price_range_max':self.max_price, 'wine_type_ids[]':self.type_id}
+        return urlencode(payload, quote_via=quote_plus)
 
 
 def as_wine(dict):
