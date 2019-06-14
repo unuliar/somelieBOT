@@ -2,7 +2,7 @@
 
 from enum import Enum
 
-token = '891676728:AAEl_6OWG86_g2o39tLZMoHP3V36OJDlyGo'
+token = ''
 db_file = "db.vdb"
 static_params='?country_code=RU&currency_code=RUB&grape_filter=varietal&order=desc'
 
